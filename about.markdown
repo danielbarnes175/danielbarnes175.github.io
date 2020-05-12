@@ -4,15 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+My name is Daniel. I'm currently a Senior at Iowa State University studying Software Engineering. I created the motto "Develop, Inspire, Create" because those are the core tenants of my life. 
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+What do those words mean to you? I can tell you what they mean to me. To me, the phrase invokes a feeling of wanting to improve. It invokes a feeling of wanting to do something bigger, and grander. That's exactly why I made this website. I wanted a platform where I could take the core tenants of my life- develop, inspire, create- and share them with the world.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+So I ask of you to join me on this journey, and together we can live our lives developing, inspiring, and creating.

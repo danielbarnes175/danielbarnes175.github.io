@@ -28,7 +28,7 @@ twitter_username: bballdaniel3
 github_username:  danielbarnes175
 
 # Build settings
-theme: minima
+remote_theme: danielbarnes175/minima
 plugins:
   - jekyll-feed
 

@@ -75,7 +75,7 @@ As you can see, we completed a lot of work. Italicized bullets are ones that I s
 
 ## Final Product
 
-When we were presenting to class, we created this poster to sum up our project.
+When we were presenting to the class, we created this poster to sum up our project.
 
 <embed class="image-responsive" src="../assets/img/projects/BFB/BFB_FinalReport.pdf" type="application/pdf" width="800px" height="800px">
 

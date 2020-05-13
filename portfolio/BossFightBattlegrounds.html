@@ -40,7 +40,15 @@
   </header>
 
   <div class="post-content">
-    <h1 id="boss-fight-battlegrounds">Boss Fight Battlegrounds</h1>
+    <figure>
+    <img class="responsive-image" src="../assets/img/projects/BFB/BFB_Boss.png" alt="The Boss" width="30%" />
+    <figcaption>The Boss - Modeled off our friend Adam</figcaption>
+</figure>
+
+<svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>
+<p><a href="https://github.com/danielbarnes175/BossFightBattlegrounds">View Source</a></p>
+
+<h1 id="boss-fight-battlegrounds">Boss Fight Battlegrounds</h1>
 
 <p>Now this one was a fun one. I worked on it with a team of 3 other students for Com S 309, or Software Development Practices, in Fall 2019. We ended up being voted the #1 best project out of 78 projects. We worked hard on this project, and it paid off when we had a working game at the end of the semester.</p>
 
@@ -48,11 +56,78 @@
 
 <p>So, how did we do it?</p>
 
+<figure>
+    <img class="responsive-image" src="../assets/img/projects/BFB/BFB_Player.png" alt="Player SpriteSheet" width="50%" />
+    <figcaption>Spritesheet for the player. Consists of an idle animation, and running animation.</figcaption>
+</figure>
 <h2 id="starting-off">Starting Off</h2>
+
+<p>At the beginning of the semester, we were sure that we wanted to make a game, however, we didn’t really know what we wanted the game to be about. We created a game design document where we brainstormed everything we wanted to go into the game from how the players would feel to how gameplay would work. You can see that game design document below. You’ll notice that this was just brainstorming everything we could come up with, and not everything was added.</p>
+
+<embed class="image-responsive" src="../assets/img/projects/BFB/BFB_GameOutline.pdf" type="application/pdf" width="800px" height="800px" />
+
+<p>We decided that we wanted to initially start with a desktop application, and then toward the end of the semester, if we had time, we would port it to mobile. This meant that we needed to work in a framework that supported cross-platform compatibility. This is when we found Monogame. From there, we started to create the game.</p>
 
 <h2 id="workflow">Workflow</h2>
 
+<p>Since this class also was meant to teach us about agile principles, we ended up working in five 3-week sprints. Rather than daily standups, we had one or two meetings per week. The work for each sprint was as follows:</p>
+
+<h3 id="sprint-1">Sprint 1</h3>
+<ul>
+  <li>Experiments: Since we had no experience using Monogame, this sprint was designed for everyone to play around with the framework and see if it would fit our needs.</li>
+</ul>
+
+<h3 id="sprint-2">Sprint 2</h3>
+<ul>
+  <li><em>CI/CD</em></li>
+  <li>Tile Map/Engine</li>
+  <li>Player / Player controls</li>
+  <li>Event Manager</li>
+  <li>Scene Manager</li>
+  <li>Basic TCP Server</li>
+  <li><em>Animation Manager</em></li>
+</ul>
+
+<h3 id="sprint-3">Sprint 3</h3>
+<ul>
+  <li><em>Website / Database / User Authentication</em></li>
+  <li>UI Framework</li>
+  <li>Human Physics</li>
+  <li>Building</li>
+  <li>Camera</li>
+  <li>Chat</li>
+</ul>
+
+<h3 id="sprint-4">Sprint 4</h3>
+<ul>
+  <li>Mockito Unit Tests</li>
+  <li>UI Framework</li>
+  <li><em>Spells</em></li>
+  <li><em>Combat</em></li>
+  <li><em>Store</em></li>
+  <li>Monster Physics / AI</li>
+  <li>Inventory</li>
+</ul>
+
+<h3 id="sprint-5">Sprint 5</h3>
+<ul>
+  <li>Settings</li>
+  <li><em>Game Components / Gameplay</em></li>
+  <li><em>Boss</em></li>
+  <li><em>Update AI</em></li>
+  <li>HUD</li>
+  <li>Audio</li>
+  <li>Update Chat</li>
+</ul>
+
+<p>As you can see, we completed a lot of work. Italicized bullets are ones that I specifically worked on.</p>
+
 <h2 id="final-product">Final Product</h2>
+
+<p>When we were presenting to class, we created this poster to sum up our project.</p>
+
+<embed class="image-responsive" src="../assets/img/projects/BFB/BFB_FinalReport.pdf" type="application/pdf" width="800px" height="800px" />
+
 
   </div>
 

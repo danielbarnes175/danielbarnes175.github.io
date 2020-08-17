@@ -9,13 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="#DevelopInspireCreate" />
 <meta property="og:description" content="#DevelopInspireCreate" />
-<link rel="canonical" href="http://danielbarnes175.github.io/portfolio/FacialTrackingCamera" />
-<meta property="og:url" content="http://danielbarnes175.github.io/portfolio/FacialTrackingCamera" />
+<link rel="canonical" href="http://localhost:4000/portfolio/FacialTrackingCamera" />
+<meta property="og:url" content="http://localhost:4000/portfolio/FacialTrackingCamera" />
 <meta property="og:site_name" content="Daniel Barnes" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://danielbarnes175.github.io/portfolio/FacialTrackingCamera","headline":"Daniel Barnes","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Daniel Barnes","url":"http://localhost:4000/portfolio/FacialTrackingCamera","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://danielbarnes175.github.io/feed.xml" title="Daniel Barnes" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Daniel Barnes" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Daniel Barnes</a><nav class="site-nav">
@@ -41,6 +41,54 @@
 
   <div class="post-content">
     <h1 id="face-tracking-camera">Face Tracking Camera</h1>
+
+<p>Checkout a video showcasing this project <a href="https://www.youtube.com/watch?v=eH3_yiz7nn4">here</a></p>
+
+<p>A camera that can detect a person’s face, and then rotate on servos to follow the person’s face as they move around. This project was created with a team for HackISU X in 2018.</p>
+
+<svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>
+<p><a href="https://github.com/danielbarnes175/HackISU2018">View Source</a></p>
+
+<h3 id="the-three-stages">The Three Stages</h3>
+
+<p>There were three stages in the success of this project:</p>
+
+<ol>
+  <li>Setting up the JavaFX frame to display the camera.</li>
+  <li>Setting up OpenCV to detect faces.</li>
+  <li>Setting up the motors and passing the input to correctly follow a user’s face.</li>
+</ol>
+
+<h4 id="javafx">JavaFX</h4>
+
+<p>The UI part of this project is rather simple. We just wanted a way to see what our camera was seeing. We created a JavaFX frame, and connected the camera output to display in this frame.</p>
+
+<h4 id="opencv">OpenCV</h4>
+
+<p>The OpenCV part is the fun part. We used the haarcascade strategy for detecting faces. This looks for 2 out of 3 of eyes, mouth, and nose bridge. When there are two of the three, we can draw a rectangle around the face. This will contain the coordinates of the top left corner of the face, as well as the width and height. With this, we can figure out where our face is relative to our camera’s “vision” and move the camera based on that. More on this in the next section.</p>
+
+<h4 id="moving-the-camera">Moving the Camera</h4>
+
+<p>So we know where our face is, right? Now, we just want to take those coordinates, and move them. We cannot move the face itself, so we must move the camera. Rather than shift the object on the graph, we are shifting the graph itself.</p>
+
+<p>We serialized our rectangle data, and streamed it to an arduino. From the arduino, we were able to run C code that would drive the motors based on where we needed to move the camera. For example, if our user was to the left of center, we simply need to move the camera to look more left. Keep moving left until the face is within the bounds that we designated for the center of the screen.</p>
+
+<p>We used two motors. One was for driving horizontal movement, and one was for driving vertical movement.</p>
+
+<hr />
+
+<h3 id="what-could-be-next">What could be next?</h3>
+
+<p>Unfortunately, we didn’t continue developing this project after the hackathon, but there are a lot of different features that could be added. What we’ve created could be the base for some very fun stuff!</p>
+
+<ul>
+  <li>Live Video Stream - Setup the camera video output feed to stream to a website</li>
+  <li>Voice Control - Use the Amazon Alexa API to implement voice control</li>
+  <li>Audio - Have audio on the device to speak based on what a user is doing</li>
+  <li>Sentry Mode - Rotate the camera looking for faces, and when it finds one, start tracking</li>
+  <li>360* movement - Give the camera the ability to rotate 360 degrees</li>
+  <li>Independence from laptop - Switch the program to run off a Raspberry Pi, so it can be more mobile</li>
+</ul>
 
   </div>
 

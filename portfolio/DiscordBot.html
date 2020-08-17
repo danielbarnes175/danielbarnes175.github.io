@@ -9,13 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="#DevelopInspireCreate" />
 <meta property="og:description" content="#DevelopInspireCreate" />
-<link rel="canonical" href="http://danielbarnes175.github.io/portfolio/DiscordBot" />
-<meta property="og:url" content="http://danielbarnes175.github.io/portfolio/DiscordBot" />
+<link rel="canonical" href="http://localhost:4000/portfolio/DiscordBot" />
+<meta property="og:url" content="http://localhost:4000/portfolio/DiscordBot" />
 <meta property="og:site_name" content="Daniel Barnes" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://danielbarnes175.github.io/portfolio/DiscordBot","headline":"Daniel Barnes","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Daniel Barnes","url":"http://localhost:4000/portfolio/DiscordBot","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://danielbarnes175.github.io/feed.xml" title="Daniel Barnes" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Daniel Barnes" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Daniel Barnes</a><nav class="site-nav">
@@ -41,6 +41,127 @@
 
   <div class="post-content">
     <h1 id="discord-bot">Discord Bot</h1>
+
+<p><img src="https://i.imgur.com/LPslyRj.png" alt="An example of using the bot" /></p>
+
+<p>A Discord bot used for managing servers and other various functions. It’s created with Node.js and Discord.js.</p>
+
+<svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>
+<p><a href="https://github.com/danielbarnes175/DanielBot">View Source</a></p>
+
+<h3 id="strategy">Strategy</h3>
+
+<p>When I first started this Bot, I wasn’t sure exactly what I wanted it to do. I wanted to use it primarily as a way to learn javascript. To do this, I would need to create the bot in a way such that it is easily extendable and modifiable.</p>
+
+<h4 id="botjs">Bot.js</h4>
+
+<p>Bot.js is a file that is the primary driver for the bot. It puts the bot online, and grabs the commands that can be called. It also handles the listening for calling commands.</p>
+
+<p>Let’s take a look at bot.js</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const botSettings = require("./botSettings.json");
+const Discord = require("discord.js");
+const fs = require("fs");
+
+const prefix = botSettings.prefix;
+
+const bot = new Discord.Client({disableEveryone: true});
+bot.commands = new Discord.Collection();
+
+fs.readdir("./cmds/", (err, files) =&gt; {
+	if (err) console.error(err);
+
+	let jsfiles = files.filter(f =&gt; f.split(".").pop() === "js");
+	if (jsfiles.length &lt;= 0) {
+		console.log("No commands to load.")
+		return;
+	}
+
+	console.log(`Loading ${jsfiles.length} commands!`);
+
+	jsfiles.forEach((f, i) =&gt; {
+		let props = require(`./cmds/${f}`);
+		console.log(`${i+1}: ${f} loaded!`);
+		bot.commands.set(props.help.name, props);
+	});
+});
+
+bot.on('error', err =&gt; {
+	console.error(err);
+});
+
+bot.on("ready", async () =&gt; {
+	console.log(` `);
+	console.log(`Servers bot is connected to [${bot.guilds.size}]:`);
+
+	bot.guilds.forEach((f, i) =&gt; {
+	    console.log(`${f} connected.`);
+	});
+
+	console.log(` `);
+	console.log('Bot is ready! ' + bot.user.username);
+
+	//Creates the invite link and puts it in the console
+	try {
+		let link = await bot.generateInvite(["ADMINISTRATOR"]);
+		console.log(link);
+	} catch(e) {
+		console.log(e.stack);
+	}
+});
+
+bot.on("message", async message =&gt; {
+	//If it's another bot or if its in a dm, don't do anything.
+	if (message.author.bot) return;
+	if (message.channel.type === "dm") return;
+
+	let messageArray = message.content.split(" ");
+	let command = messageArray[0];
+	let args = messageArray.slice(1);
+
+	//Ignore if they don't start with '~'
+	if (!command.startsWith(prefix)) return;
+
+	let cmd = bot.commands.get(command.slice(prefix.length));
+	if (cmd) cmd.run(bot, message, args);
+
+});
+
+bot.login(botSettings.token);
+</code></pre></div></div>
+
+<h4 id="cmds">/cmds/</h4>
+
+<p>/cmds/ is the directory where I hold all of my commands. Each command is contained within its own file. This allows me to easily know where to modify code for a specific command rather than being forced to go through multiple files. I kept most commands simple so they rarely needed to call external files. If they did, I would still know where to go to find the root. Since my code is open source, it also allows others to look through my code and easily navigate it.</p>
+
+<p>Here are the current commands:</p>
+
+<p><img src="https://i.imgur.com/SqWvFX6.png" alt="The /cmds/ directory" /></p>
+
+<p>Let’s take moron.js as an example to show exactly what the format for creating a new command looks like.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/*
+ This command logs in the console that the person running the bot is a moron.
+ There will be no noticeable output for regular users using the command.
+
+ Usage is defined as ~moron
+*/
+module.exports.run = async (bot, message, args) =&gt; {
+	console.log("You're a moron");
+}
+
+module.exports.help = {
+	name: "moron",
+	description: "Call the person running the bot a moron. You won't see the message, but they will.",
+	usage: "~moron"
+}
+</code></pre></div></div>
+
+<p>moron.js is a command used for logging important information. You can see that every command has a run function, which is what is called when someone calls the command, for example, <code class="highlighter-rouge">~moron</code> and a help function. This is called when someone asks for help about a specific command, for example <code class="highlighter-rouge">~help moron</code>.</p>
+
+<h3 id="want-danielbot-in-your-server">Want DanielBot in your server?</h3>
+
+<p>Just for full disclosure, I’ve stopped development on DanielBot, so things could break (For example, 3rd party APIs that are used), but if you really want to add DanielBot to your server, there’s a link on the <a href="https://github.com/danielbarnes175/DanielBot">GitHub</a></p>
 
   </div>
 

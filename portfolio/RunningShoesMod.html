@@ -9,13 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="#DevelopInspireCreate" />
 <meta property="og:description" content="#DevelopInspireCreate" />
-<link rel="canonical" href="http://danielbarnes175.github.io/portfolio/RunningShoesMod" />
-<meta property="og:url" content="http://danielbarnes175.github.io/portfolio/RunningShoesMod" />
+<link rel="canonical" href="http://localhost:4000/portfolio/RunningShoesMod" />
+<meta property="og:url" content="http://localhost:4000/portfolio/RunningShoesMod" />
 <meta property="og:site_name" content="Daniel Barnes" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://danielbarnes175.github.io/portfolio/RunningShoesMod","headline":"Daniel Barnes","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Daniel Barnes","url":"http://localhost:4000/portfolio/RunningShoesMod","description":"#DevelopInspireCreate","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://danielbarnes175.github.io/feed.xml" title="Daniel Barnes" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Daniel Barnes" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Daniel Barnes</a><nav class="site-nav">
@@ -41,6 +41,30 @@
 
   <div class="post-content">
     <h1 id="minecraft-running-shoes-mod">Minecraft Running Shoes Mod</h1>
+
+<p>Minecraft Running Shoes is a simple mod for Minecraft that adds shoes that make you run faster. I felt slow in my gameplay, so I wanted an easy way to go faster, while also still being balanced.</p>
+
+<p>Check out a video demo <a href="https://www.youtube.com/watch?v=6xJ0J0hItdI&amp;t=0s">here</a><br />
+Check out the Curseforge page <a href="https://www.curseforge.com/minecraft/mc-mods/running-shoes-mod-1-12-2">here</a></p>
+
+<svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>
+<p><a href="https://github.com/danielbarnes175/MinecraftRunningShoesMod">View Source</a></p>
+
+<p>As of writing this (August 2020), my running shoes mod has over 7,000 downloads. That’s crazy! I never thought that this mod would be downloaded that much.</p>
+
+<h3 id="conception">Conception</h3>
+
+<p>I wanted to create a Minecraft mod, but unfortunately, tutorials on how to do this were few and far between. I managed to find one targeting Minecraft v1.12.2, which was the version I wanted to create my mod for. I watched the tutorial, but it only really showed how to add custom items.</p>
+
+<p>I wanted a custom effect for my item. I wanted it to give the user a higher base speed. Initially I decided to have it apply a potion effect to the user, but then I realized that I want speed potions to be able to stack with my shoes. If the shoes themselves applied an effect, then this wouldn’t be feasible. So, I switched to modifying the player movement speed. This was actually harder than it sounds because there wasn’t any documentation. I had to look through the Minecraft forge api, find where they modify the player, and hope that there was something related to speed. Luckily for me, there was.</p>
+
+<h3 id="updates">Updates</h3>
+
+<p>I had hit my minimal viable product in simple running shoes, but I also wanted to add a config in case a user wanted to modify the speed of the shoes. This allowed users to tweak the mod to their liking. I think it’s very important that a product allows a user to have some sense of control, so that’s why I added them.</p>
+
+<p>I also added sprinting shoes, which were the exact same as running shoes, but faster. They were also customizable in the config.</p>
+
+<p>I also wanted to update the mod for more versions of Minecraft as they came out. Unfortunately, this ended up being a bigger undertaking than I had expected, and I simply didn’t have the time and resources to dedicate to it, so currently it only supports 1.12.2.</p>
 
   </div>
 
